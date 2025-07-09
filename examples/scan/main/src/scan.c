@@ -19,7 +19,7 @@
 #include "mmwlan.h"
 #include "mmwlan_regdb.def"
 
-// #define COUNTRY_CODE "AU"
+#define COUNTRY_CODE "US"
 #ifndef COUNTRY_CODE
 #error COUNTRY_CODE must be defined to the appropriate 2 character country code. \
        See mmwlan_regdb.def for valid options.

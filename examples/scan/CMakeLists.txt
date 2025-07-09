@@ -8,6 +8,8 @@ endif()
 
 message(STATUS "MMIOT_ROOT: $ENV{MMIOT_ROOT}")
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 if(DEFINED COUNTRY_CODE)
     message (Using country code: ${COUNTRY_CODE})
     add_compile_definitions(COUNTRY_CODE="${COUNTRY_CODE}")
@@ -15,3 +17,4 @@ endif()
 
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 project(scan)
+
