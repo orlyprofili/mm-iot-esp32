@@ -78,7 +78,7 @@ void app_wlan_init(void)
     /* Initialize Morse subsystems, note that they must be called in this order. */
     mmhal_init();
     mmwlan_init();
-
+    mmwlan_override_max_tx_power(23);
     mmwlan_set_channel_list(load_channel_list());
 
     /* Load IP stack settings from config store, or use defaults if no entry found in
