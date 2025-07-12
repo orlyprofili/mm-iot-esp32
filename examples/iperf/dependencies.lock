@@ -1,0 +1,86 @@
+dependencies:
+  idf:
+    source:
+      type: idf
+    version: 5.4.1
+  mm_shims:
+    dependencies:
+    - name: idf
+      version: ==5.4.1
+    - name: mmutils
+      path: ../src/mmutils
+      version: ==2.6.4-esp32
+    source:
+      path: /Users/apisa/work/import/mm-iot-esp32/framework/mm_shims
+      type: local
+    targets:
+    - esp32s3
+    version: 2.6.4-esp32
+  mmipal:
+    dependencies:
+    - name: idf
+      version: ==5.4.1
+    - name: mmutils
+      path: ../mmutils
+      version: ==2.6.4-esp32
+    source:
+      path: /Users/apisa/work/import/mm-iot-esp32/framework/src/mmipal
+      type: local
+    targets:
+    - esp32s3
+    version: 2.6.4-esp32
+  mmiperf:
+    dependencies:
+    - name: idf
+      version: ==5.4.1
+    - name: mmipal
+      path: ../mmipal
+      version: ==2.6.4-esp32
+    source:
+      path: /Users/apisa/work/import/mm-iot-esp32/framework/src/mmiperf
+      type: local
+    targets:
+    - esp32s3
+    version: 2.6.4-esp32
+  mmpktmem:
+    dependencies:
+    - name: idf
+      version: ==5.4.1
+    source:
+      path: /Users/apisa/work/import/mm-iot-esp32/framework/src/mmpktmem
+      type: local
+    targets:
+    - esp32s3
+    version: 2.6.4-esp32
+  mmutils:
+    dependencies:
+    - name: idf
+      version: ==5.4.1
+    source:
+      path: /Users/apisa/work/import/mm-iot-esp32/framework/src/mmutils
+      type: local
+    targets:
+    - esp32s3
+    version: 2.6.4-esp32
+  morselib:
+    dependencies:
+    - name: idf
+      version: ==5.4.1
+    - name: mmpktmem
+      path: ../src/mmpktmem
+      version: ==2.6.4-esp32
+    source:
+      path: /Users/apisa/work/import/mm-iot-esp32/framework/morselib
+      type: local
+    targets:
+    - esp32s3
+    version: 2.6.4-esp32
+direct_dependencies:
+- mm_shims
+- mmipal
+- mmiperf
+- mmutils
+- morselib
+manifest_hash: 60cf696760c64b05c8d10bbd7d487e6b523ebd4451474a99d42376b66b71e0cf
+target: esp32s3
+version: 2.0.0
