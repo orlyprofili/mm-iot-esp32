@@ -253,7 +253,9 @@ static void osc_task(void *arg)
         if (phase >= 1.0f)
             phase -= 1.0f;
 
-        vTaskDelay(pdMS_TO_TICKS(1000)); /* 10 ms */
+        //DO 1000 if you want iperf to work
+        vTaskDelay(pdMS_TO_TICKS(10)); /* 10 ms */
+        //vTaskDelay(pdMS_TO_TICKS(1000)); /* 10 ms */
     }
 }
 
