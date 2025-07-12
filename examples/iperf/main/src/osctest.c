@@ -239,6 +239,7 @@ void app_main(void)
         break;
     }
     
+    //#define UDP_PING_TASK
     #ifdef UDP_PING_TASK
     /* Run this on machine
     # very tiny Python 3 UDP echo
@@ -254,5 +255,5 @@ void app_main(void)
     */
     xTaskCreatePinnedToCore(udp_ping_task, "ping", PING_TASK_STACK_W, NULL, PING_TASK_PRIORITY, NULL, 1);
     #endif
-    xTaskCreatePinnedToCore(osc_task, "osc", OSC_TASK_STACK_W, NULL, OSC_TASK_PRIORITY, NULL, 1);
+    xTaskCreatePinnedToCore(osc_task, "osc", OSC_TASK_STACK_W, NULL, OSC_TASK_PRIORITY, NULL, 0);
 }
