@@ -20,16 +20,16 @@
 #include "mmwlan.h"
 #include "mmwlan_regdb.def"
 
-// #define COUNTRY_CODE "AU"
+#define COUNTRY_CODE "US"
 #ifndef COUNTRY_CODE
 #error COUNTRY_CODE must be defined to the appropriate 2 character country code. \
        See mmwlan_regdb.def for valid options.
 #endif
 
 /** SSID of the AP to connect to. */
-#define SSID "MorseMicro"
+#define SSID "ekh01-fd95"
 /** Passphrase of the AP to connect to. Comment out for OWE. */
-#define PASSPHRASE "12345678"
+#define PASSPHRASE "11111111"
 
 /**
  * Link state callback. This is typically used to signal state to the network stack.

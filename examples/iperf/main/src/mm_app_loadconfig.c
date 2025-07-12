@@ -21,7 +21,7 @@
 #include "mmwlan_regdb.def"
 
 
-// #define COUNTRY_CODE "AU"
+#define COUNTRY_CODE "US"
 #ifndef COUNTRY_CODE
 #error COUNTRY_CODE must be defined to the appropriate 2 character country code. \
        See mmwlan_regdb.def for valid options.
@@ -34,14 +34,14 @@
 /* Default SSID  */
 #ifndef SSID
 /** SSID of the AP to connect to. (Do not quote; it will be stringified.) */
-#define SSID                            MorseMicro
+#define SSID ekh01-fd95
 #endif
 
 /* Default passphrase  */
 #ifndef SAE_PASSPHRASE
 /** Passphrase of the AP (ignored if security type is not SAE).
  *  (Do not quote; it will be stringified.) */
-#define SAE_PASSPHRASE                  12345678
+#define SAE_PASSPHRASE                  11111111
 #endif
 
 /* Default security type  */
@@ -52,16 +52,16 @@
 
 /* Configure the STA to use DHCP, this overrides any static configuration.
  * If the @c ip.dhcp_enabled is set in the config store that will take priority */
-// #define ENABLE_DHCP                     (1)
+#define ENABLE_DHCP                     (1)
 
 /* Static Network configuration */
 #ifndef STATIC_LOCAL_IP
 /** Statically configured IP address (if ENABLE_DHCP is not set). */
-#define STATIC_LOCAL_IP                 "192.168.1.2"
+#define STATIC_LOCAL_IP                 "10.0.0.130"
 #endif
 #ifndef STATIC_GATEWAY
 /** Statically configured gateway address (if ENABLE_DHCP is not set). */
-#define STATIC_GATEWAY                  "192.168.1.1"
+#define STATIC_GATEWAY                  "10.0.0.15"
 #endif
 #ifndef STATIC_NETMASK
 /** Statically configured netmask (if ENABLE_DHCP is not set). */

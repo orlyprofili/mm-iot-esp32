@@ -10,6 +10,9 @@
 #include "../common/mmiperf_private.h"
 #include "lwip/pbuf.h"
 
+//TODO: Needed? Unclear to me
+//#define CHECKSUM_CHECK_ICMP 0 /* accept zero/“bad” cksums   */
+//#define CHECKSUM_GEN_ICMP 1   /* software-generate replies  */
 
 /**
  * Get a pbuf containing an iperf payload.

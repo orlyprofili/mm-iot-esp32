@@ -3,11 +3,17 @@
 set(src
     "src/mm_app_loadconfig.c"
     "src/mm_app_common.c"
-    "src/iperf.c")
+    "src/osctest.c")
 
 set(inc
     "src")
 
+set(LWIP_CHECKSUM_CTRL_PER_NETIF 1)
+
+set(CHECKSUM_CHECK_ICMP 0) # accept zero/“bad” cksums
+set(CHECKSUM_GEN_ICMP 1)   # software-generate replies
+
+
 idf_component_register(SRCS ${src}
                        INCLUDE_DIRS ${inc}
-                       PRIV_REQUIRES driver morselib mm_shims mmipal mmiperf lwip)
+                       PRIV_REQUIRES driver morselib mm_shims mmipal mmiperf lwip esp_timer )

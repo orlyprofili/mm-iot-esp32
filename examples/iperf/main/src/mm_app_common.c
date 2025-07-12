@@ -127,6 +127,8 @@ void app_wlan_start(void)
     mmosal_semb_wait(link_established, UINT32_MAX);
 
     /* Wi-Fi link is now established, return to caller */
+    //TODO: I don't think this did shit
+    mmwlan_set_power_save_mode(MMWLAN_PS_ENABLED);
 }
 
 void app_wlan_stop(void)

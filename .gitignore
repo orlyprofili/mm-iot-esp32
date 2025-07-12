@@ -16,6 +16,9 @@ GPATH
 .#*
 \#*#
 
+# Python virtual environment
+.venv/
+
 # eclipse setting
 .settings
 
