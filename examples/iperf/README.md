@@ -222,3 +222,45 @@ This is a demonstration project. For production use, consider:
 - Configurable OSC parameters via menu system
 - Multiple OSC parameter transmission
 - Integration with audio/sensor data sources
+
+
+
+# Context Prompt for Halow performance tuning at the bridge
+
+## HaLow-Bridge Testbed Context – paste into future prompts
+
+• **Hardware**  
+  – Access point: Raspberry Pi 4 Model B (4 GB RAM)  
+  – Wireless card: Morse Micro MM6108 HaLow PCIe module on Seeed Pi4 PCIe HAT  
+  – Station: ESP32-S3 + MM6108 (custom firmware with OSC-beacon + iperf demo)  
+
+• **Firmware / OS versions**  
+  – AP runs Morse-Micro OpenWrt **2.7-dev**  
+    • image: `openwrt-morse-2.7-dev-morse-micro-ekh01-squashfs-sysupgrade.img.gz`  
+    • kernel: **5.15.150**  
+  – ESP32 built with ESP-IDF 5.4.1 + Morse Micro HaLow SDK  
+
+• **Network topology**  
+  – AP fixed IP **10.0.0.16** (bridged to wired LAN)  
+  – ESP32 station IP **10.0.0.130** via DHCP  
+  – Purpose: ultra-low-latency OSC (UDP 8000) + RTP-MIDI (UDP 5004/5005) over 802.11ah
+
+• **Some AP wireless settings that have been tinkered with** (`/etc/config/wireless`)  
+  – `band s1g`, `hwmode 11ah`, **`chanbw 8` MHz**, `channel 40`  
+  – `short_gi 1`, `txpower 30` dBm (max)  
+  – `beacon_int 50` ms, `dtim_period 1`  
+  – `mcast_rate 1200` kbps (1.2 Mb/s)  
+  – WMM enabled (default)
+
+• **QoS / buffer-management**  
+  – nftables rule: tag UDP 8000/5004/5005 with **DSCP EF** → maps to WMM-Voice  
+  – Root qdisc on `wlan0`: **FQ-CoDel** (`tc qdisc add dev wlan0 root fq_codel target 5ms interval 100ms quantum 300`)  
+  – CPU governor pinned to **performance** in `/etc/rc.local`
+
+• **Verification checklist**  
+  – `iwinfo wlan0 assoclist` shows 8 MHz, MCS 7/4 when active  
+  – `tc -s qdisc show dev wlan0` lists `fq_codel` with packets  
+  – `nft list table inet qos` displays DSCP EF rule  
+  – `grep scaling_governor` ⇒ `performance` for all cores
+
+Ongoing Goal: **minimise latency / jitter** for OSC & RTP-MIDI while keeping link stable; willing to adjust any AP parameters or kernel tunables (no regulatory constraints).  

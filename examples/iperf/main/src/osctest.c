@@ -255,5 +255,8 @@ void app_main(void)
     */
     xTaskCreatePinnedToCore(udp_ping_task, "ping", PING_TASK_STACK_W, NULL, PING_TASK_PRIORITY, NULL, 1);
     #endif
+    #define OSC_TASK
+    #ifdef OSC_TASK
     xTaskCreatePinnedToCore(osc_task, "osc", OSC_TASK_STACK_W, NULL, OSC_TASK_PRIORITY, NULL, 0);
+    #endif
 }

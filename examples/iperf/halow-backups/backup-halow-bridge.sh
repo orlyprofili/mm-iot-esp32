@@ -4,8 +4,8 @@
 
 set -euo pipefail
 
-PI_HOST=${1:-root@10.0.0.15}
-DEST_DIR="./halow-backups"
+PI_HOST=${1:-root@10.0.0.16}
+DEST_DIR="."
 STAMP=$(date +%Y%m%d-%H%M)
 DEST_FILE="${DEST_DIR}/halow_cfg_${STAMP}.tar.gz"
 
